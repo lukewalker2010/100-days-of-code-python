@@ -12,4 +12,4 @@ people_total = int(people_total)
 
 total_per_person = (bill_total + (bill_total * (tip_percent / 100))) / people_total
 
-print(f"Each person should pay ${total_per_person:.2f}")
+print(f"Each person should pay: ${total_per_person:.2f}")
