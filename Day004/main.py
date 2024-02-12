@@ -54,14 +54,28 @@ import random
 
 rock = "Rock"
 paper = "Paper"
-Scissors = "Scissors"
+scissors = "Scissors"
 
-user_choise = input("What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors.\n")
+game_images = [rock, paper, scissors]
 
-computer_choise = random.randint(0,2)
-print(f"Comuter chose {computer_choise}")
+user_choise = int(input("What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors.\n"))
 
-if user_choise == computer_choise:
-    print("It is a draw")
-elif user_choise == 0 & computer_choise == 2:
-    print("You win")
+if user_choise >= 3 or user_choise < 0:
+    print("You typed an invalid number, you lose")
+else:
+    print(game_images[user_choise])
+
+    computer_choise = random.randint(0,2)
+    print("Comuter chose: ")
+    print(game_images[computer_choise])
+
+    if user_choise == computer_choise:
+        print("It is a draw")
+    elif computer_choise == 0 and user_choise == 2:
+        print("You lose")
+    elif user_choise == 0 and computer_choise == 2:
+        print("You win")
+    elif computer_choise > user_choise:
+        print("You lose")
+    elif user_choise > computer_choise:
+        print("You win")
