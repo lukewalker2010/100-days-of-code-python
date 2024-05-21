@@ -1,27 +1,20 @@
-# Errors and Exceptions
+# Keyword Method with iterrows()
+# {new_key:new_value for (index, row) in df.iterrows()}
 
-# File not found
-try:
-    file = open("a_file.txt")
-except:
-    print("There was an error")
+import pandas
 
-# with open("a_file.txt") as file:
-#     file.read()
+data = pandas.read_csv("Day030/nato_phonetic_alphabet.csv")
+phonetic_dict = {row.letter: row.code for (index, row) in data.iterrows()}
+print(phonetic_dict)
 
-# KeyError
-# a_dictionary = {"key": "value"}
-# value = a_dictionary["non_existent_key"]
+def generate_phonetic():
+    word = input("Enter a word: ").upper()
+    try:
+        output_list = [phonetic_dict[letter] for letter in word]
+    except KeyError as error_message:
+        print("Sorry, only letters in the alphabet please.")
+        generate_phonetic()
+    else:
+        print(output_list)
 
-# IndexError
-# fruit_list = ["Apple", "Banana", "Pear"]
-# fruit = fruit_list[3]
-
-# TypeError
-# text = "abc"
-# print(text + 5)
-
-# Try
-# Except
-# Else
-# Finally
+generate_phonetic()
